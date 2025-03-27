@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非公式 Rammerhead作成補助ツール</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+            box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .copy-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+        .discord-btn {
+            background-color: #5865F2;
+            color: white;
+        }
+        .discord-btn:hover {
+            background-color: #404EED;
+        }
+        .guide-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .guide-btn:hover {
+            background-color: #218838;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: scroll;
+            text-align: left;
+            box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+            white-space: pre-line;
+        }
+        .close-btn {
+            display: block;
+            margin: 20px auto 0;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* 独自の丸みを持ったスクロールバー */
+        .modal-content::-webkit-scrollbar {
+            width: 12px; /* 幅を広めに設定 */
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background-color: #888; /* スクロールバーの色（グレー） */
+            border-radius: 10px; /* 丸みを持たせる */
+            border: 3px solid #f4f4f4; /* 背景と境界を分けるために枠を追加 */
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background-color: #f4f4f4;
+            border-radius: 10px; /* 丸みを持たせる */
+        }
+
+        /* Google翻訳ウィジェット */
+        #google_translate_element {
+            margin-top: 20px;
+        }
+
+        /* 赤文字スタイル */
+        .red-text {
+            color: red;
+            font-weight: bold;
+        }
+
+    </style>
+    <script>
+        function openModal() {
+            document.getElementById("modal").style.display = "flex";
+        }
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ja',
+                includedLanguages: 'en,es,de,fr,it,pt,ru', // 日本語を除いた翻訳可能な言語
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <!-- Google翻訳ウィジェットスクリプト -->
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+    <h1><span class="red-text">非公式</span> Rammerhead作成補助ツール</h1>
+
+    <div class="container">
+        <button class="copy-btn" onclick="copyToClipboard()">108.181.32.77 をコピー</button>
+
+        <a href="https://discord.com/channels/886630771182407731/886643474898776146" target="_blank">
+            <button class="discord-btn">Discord チャンネルへ</button>
+        </a>
+
+        <button class="guide-btn" onclick="openModal()">作り方</button>
+    </div>
+
+    <!-- Google翻訳ウィジェット表示エリア -->
+    <div id="google_translate_element"></div>
+
+    <!-- モーダルウィンドウ -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>無料でのランマーヘッドの作り方</h2>
+            <p>①まず無料のddnsサービスを見つけます。<br>
+（無料の制限に留意すること。更新が必要だったりします。）</p>
+            <p>②新しいサブドメイン（yoursubdomain.example.comのような）を作成します。<br>
+※ワイルドカード,TTLの設定は不要です（有効になっていたら無効にしてください）。<br>
+また、設定するのはAレコードです。(Typeなどと表示されていることもあります)</p>
+            <p>③IPv4アドレス(IPアドレスっぽいところ)の入力欄を探し、<br>
+上のボタンからコピーして貼り付けます。</p>
+            <p>④設定を保存しURLをコピーします。</p>
+            <p>⑤Discordのアカウントを持っていない場合は作成します。</p>
+            <p>⑥Discordチャンネルへボタンをクリックしてチャンネルに移ったあと、<br>
+コマンド: <code>/add-domain yoursubdomain.example.com public</code> を実行します。<br>
+（右下のアイコンからadd-domainを呼び出すこともできます。）</p>
+            <button class="close-btn" onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
+</body>
+</html>
